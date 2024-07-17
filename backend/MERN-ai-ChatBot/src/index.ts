@@ -10,9 +10,10 @@ const app = express();
 app.use("/user", userRouter);
 app.use("/chats");
 
-connectToMongoDB().then(()=>{
+connectToMongoDB()
+    .then(()=>{
     app.listen(process.env.PORT, ()=>
-    console.log(`Server running on port: ${process.env.PORT} and is connected to MongoDB`)
+        console.log(`Server running on port: ${process.env.PORT} and is connected to MongoDB`)
     );
 
 }).catch((err)=> console.error(err));
