@@ -27,7 +27,7 @@ export const signup = async(
         if(existingUser) {
             return res.status(401).json({error: "User already exists"});
         }
-        const hashPassword = await bycrypt.hash(password, 10);
+        const hashPassword = await bycrypt.hash(password, 8);
         const user = new User({name, email, hashPassword});
         await user.save();
 
