@@ -5,11 +5,6 @@ import userRouter from "./routes/user-router.js";
 
 config();
 
-process.on('uncaughtException', function (err) {
-    console.log(err);
-});
-
-
 const app = express();
 
 app.use("/user", userRouter);
