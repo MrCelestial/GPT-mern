@@ -1,11 +1,10 @@
-import {Request,Response,NextFunction} from "express";
+import {Request,Response} from "express";
 import User from "../models/user.js";
 import bycrypt from "bcrypt";
 
 export const getAllUsers = async(
     req: Request,
     res: Response,
-    next: NextFunction
 ) => {
     try {
         const users = await User.find({});
@@ -19,7 +18,6 @@ export const getAllUsers = async(
 export const signup = async(
     req: Request,
     res: Response,
-    next: NextFunction
 ) => {
     try {
         const {name, email, password} = req.body;
