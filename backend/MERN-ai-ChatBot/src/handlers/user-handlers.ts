@@ -1,4 +1,4 @@
-import {Request,Response} from "express";
+import {Request, Response} from "express";
 import User from "../models/user.js";
 import bycrypt from "bcrypt";
 
@@ -15,24 +15,20 @@ export const getAllUsers = async(
     }
 };
 
-export const signup = async(
-    req: Request,
-    res: Response,
-) => {
+export const signup = async (req, res) => {
     try {
-        //userSignup
-        const {name, email, password} = req.body;
-        const existingUser = await User.findOne({email});
-        if(existingUser) {
-            return res.status(401).json({error: "User already exists"});
+        // userSignup
+        const { name, email, password } = req.body;
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(401).json({ error: "User already exists" });
         }
-        const hashPassword = await bycrypt.hash(password, 8);
-        const user = new User({name, email, hashPassword});
+        const user = new User({ name, email, password }); // Create user with plain text password
+        user.password = await bycrypt.hash(user.password, 8); // Hash the password and assign it back to the user
         await user.save();
-
-        return res.status(201).json({message:"Signed Up", user});
-    }catch (error){
+        return res.status(201).json({ message: "Signed Up", user });
+    } catch (error) {
         console.log(error);
-        return res.status(500).json({error: error.message});
+        return res.status(500).json({ error: error.message });
     }
 };
