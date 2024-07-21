@@ -20,6 +20,7 @@ export const signup = async(
     res: Response,
 ) => {
     try {
+        //userSignup
         const {name, email, password} = req.body;
         const existingUser = await User.findOne({email});
         if(existingUser) {

@@ -1,6 +1,12 @@
-import express from "express";
 
-const app = express();
+import app from "./app.js";
+import connectToMongoDB from "./connections/mongoDB.js";
 
-app.listen(3000, () => console.log("Server is running on port 3000"));
+const PORT = process.env.PORT || 3000;
 
+connectToMongoDB().then(()=>{
+    app.listen(PORT, ()=>
+        console.log(`Server running on port: ${process.env.PORT} and is connected to MongoDB`)
+    );
+
+}).catch((err)=> console.error(err));
