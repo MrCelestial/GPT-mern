@@ -16,10 +16,13 @@ export const validate = (validations: ValidationChain[])=>{
         return res.status(422).json({errors: errors.array()});
     };
 };
-
-export const userSignupValidator = [
-    body("name").notEmpty().withMessage("Name is required"),
+export const userLoginValidator = [
     body("email").trim().notEmpty().isEmail().withMessage("Email is required"),
     body("password").trim().notEmpty().isLength({min: 8, max: 256}).withMessage("Password be at least 8 characters long"),
 
+];
+
+export const userSignupValidator = [
+    body("name").notEmpty().withMessage("Name is required"),
+    ...userLoginValidator,
 ];
