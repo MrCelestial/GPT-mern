@@ -1,11 +1,11 @@
-import {body, validationResult} from "express-validator";
-import express from "express";
+import {body, ValidationChain, validationResult} from "express-validator";
+import   {NextFunction, Response, Request} from "express";
 
-export const validate = (validations: any[])=>{
-    return async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+export const validate = (validations: ValidationChain[])=>{
+    return async (req: Request, res: Response, next: NextFunction) => {
         for(let validation of validations) {
             const result = await validation.run(req);
-            if (result.errors.length > 0) {
+            if(!result.isEmpty()){
                 break;
             }
         }
@@ -18,8 +18,8 @@ export const validate = (validations: any[])=>{
 };
 
 export const userSignupValidator = [
-    body("name").notEmpty(),
-    body("email").notEmpty().isEmail,
-    body("password").notEmpty().isLength({min: 8, max: 256}),
+    body("name").notEmpty().withMessage("Name is required"),
+    body("email").trim().notEmpty().isEmail().withMessage("Email is required"),
+    body("password").trim().notEmpty().isLength({min: 8, max: 256}).withMessage("Password be at least 8 characters long"),
 
 ];
