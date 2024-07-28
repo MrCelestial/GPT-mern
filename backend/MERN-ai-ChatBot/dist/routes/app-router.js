@@ -6,4 +6,3 @@ appRouter.use("/user", userRouter);
 appRouter.use("/users", chatRoutes);
 export default appRouter;
 //# sourceMappingURL=app-router.js.map
-//# sourceMappingURL=app-router.js.map
