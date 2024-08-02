@@ -1,11 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-html,body{
+@import url('https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&display=swap');
+
+html, body {
   margin: 0;
   padding: 0;
   background: #171718;
   color: white;
-  font-family: "Raleway",Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Glegoo", serif;
 }
-.logo-inverted{
+
+.logo-inverted {
   filter: invert(100%);
+}
+.nav-link{
+  font-family: 'Glegoo', serif;
+  font-weight: 600;
+  margin-right: 10px;
+  margin-left:20px;
+  padding: 8px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  letter-spacing: 2px;
+
 }

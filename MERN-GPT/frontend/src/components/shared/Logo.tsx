@@ -21,12 +21,13 @@ function Logo() {
             <Typography sx ={
                 {display:{md:"block", sm:"none", xs:"none" },
                     mr:"auto",
-                    fontWeight:"800",
+                    fontWeight:"600",
+                    fontFamily:"Glegoo",
                     textShadow: "2px 2px 20px #000"
                 }}
             >
-                    <span style ={{fontSize: "20px"}}>
-                        Y@psalot
+                    <span style ={{fontSize: "20px", fontWeight:"800"}}>
+                        Yapsalot
                     </span>-GPT
             </Typography>
         </div>
