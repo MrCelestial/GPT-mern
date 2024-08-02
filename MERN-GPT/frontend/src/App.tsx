@@ -4,6 +4,7 @@ import Home from "./pages/Home.tsx";
 import Login from "./pages/Login.tsx";
 import Signup from "./pages/Signup.tsx";
 import Chat from "./pages/Chat.tsx";
+//import {useAuth} from "./context/AuthContext.tsx";
 
 function App() {
    return(

@@ -1,8 +1,7 @@
-import React from 'react';
 import {Link} from "react-router-dom";
 import {Typography} from "@mui/material";
 
-function Logo(props) {
+function Logo() {
     return (
         <div style={{
             display: "flex",

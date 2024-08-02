@@ -1,4 +1,4 @@
-import {createContext, ReactNode, useEffect, useState} from 'react';
+import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
 
 type User = {
     username: string;
@@ -13,7 +13,7 @@ type UserAuth ={
     logout:() => Promise<void>;//removes the cookies
 }
 const AuthContext = createContext<UserAuth | null>(null);
-const AuthContextProvider = ({children}: {children:ReactNode}) => {
+export const AuthContextProvider = ({children}: {children:ReactNode}) => {
     const [user, setUser] = useState<User | null>(null);
     const [isLoggedIn, setLoggedIn] = useState(false);
 
@@ -29,4 +29,5 @@ const AuthContextProvider = ({children}: {children:ReactNode}) => {
         user, isLoggedIn, login, signup, logout};
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
-export default AuthContext;
+
+export const useAuth = () => useContext(AuthContext);
