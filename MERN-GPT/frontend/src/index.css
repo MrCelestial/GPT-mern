@@ -6,3 +6,6 @@ html,body{
   color: white;
   font-family: "Raleway",Verdana, Geneva, Tahoma, sans-serif;
 }
+.logo-inverted{
+  filter: invert(100%);
+}

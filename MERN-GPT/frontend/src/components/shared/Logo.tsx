@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {Typography} from "@mui/material";
 
 function Logo(props) {
     return (
@@ -8,11 +9,27 @@ function Logo(props) {
             marginRight: "auto",
             justifyContent: "space-between",
             alignItems: "center",
-            gap: "10px"
+            gap: "3px"
         }}>
             <Link to={"/"}>
-                <img src="" alt="" width="30px" height="30px" />
+                <img src="/logo.svg"
+                     alt="logo"
+                     width="50px"
+                     height="auto"
+                     className="logo-inverted"/>
+
             </Link>
+            <Typography sx ={
+                {display:{md:"block", sm:"none", xs:"none" },
+                    mr:"auto",
+                    fontWeight:"800",
+                    textShadow: "2px 2px 20px #000"
+                }}
+            >
+                    <span style ={{fontSize: "20px"}}>
+                        Y@psalot
+                    </span>-GPT
+            </Typography>
         </div>
     );
 }
