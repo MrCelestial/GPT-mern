@@ -7,10 +7,10 @@ import NavigationLink from "./shared/NavigationLink.tsx";
 const Header = () => {
     const auth = useAuth();
     return (
-        <AppBar sx={{bgcolor: "transparent", position: "static", boxShadow: "none"}}>
+        <AppBar sx={{bgcolor: "transparent", position: "relative", boxShadow: "none"}}>
             <Toolbar sx={{display: "flex"}}>
                 <Logo/>
-                <div>
+                <div style={{marginTop:"5px"}}>
                     {auth?.isLoggedIn ? (
                         <>
                             <NavigationLink bg = "" to ="/chat" text = "Go to chat" textColor="black"/>
@@ -18,8 +18,8 @@ const Header = () => {
                         </>
                     ) : (
                         <>
-                            <NavigationLink bg = "" to ="/login" text = "Login" textColor="white"/>
-                            <NavigationLink bg="" to ="/signup" text ="Signup" textColor="white" onClick={auth.logout}/>
+                            <NavigationLink bg = "" to ="/login" text = "Login" textColor="#fa2742"/>
+                            <NavigationLink bg="" to ="/signup" text ="Signup" textColor="#fa2742" onClick={auth.logout}/>
                         </>
                     )}
                 </div>

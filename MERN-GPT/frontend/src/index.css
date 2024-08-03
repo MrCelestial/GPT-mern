@@ -3,7 +3,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #171718;
+  background:#191919;
   color: white;
   font-family: "Glegoo", serif;
 }
@@ -20,5 +20,10 @@ html, body {
   border-radius: 10px;
   text-decoration: none;
   letter-spacing: 2px;
+}
+
+.MuiOutlinedInput-input-root.Mui-focused,
+.MuiOutlinedInput-notchedOutline {
+  border-color: #fa2742!important;
 
 }

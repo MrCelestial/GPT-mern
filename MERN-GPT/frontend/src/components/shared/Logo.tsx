@@ -23,10 +23,11 @@ function Logo() {
                     mr:"auto",
                     fontWeight:"600",
                     fontFamily:"Glegoo",
-                    textShadow: "2px 2px 20px #000"
+                    textShadow: "2px 2px 20px #000",
+                    color:"#e8eae3"
                 }}
             >
-                    <span style ={{fontSize: "20px", fontWeight:"800"}}>
+                    <span style ={{fontSize: "20px", fontWeight:"800", color:"#fa2742"}}>
                         Yapsalot
                     </span>-GPT
             </Typography>

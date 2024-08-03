@@ -5,9 +5,13 @@ import './index.css'
 import {createTheme, ThemeProvider} from "@mui/material";
 import {BrowserRouter} from "react-router-dom";
 import {AuthContextProvider} from "./context/AuthContext.tsx";
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost:3000/api/v1/";
+axios.defaults.withCredentials = false;
 
 const theme = createTheme({
-    typography:{fontFamily:"Raleway,serif",
+    typography:{fontFamily:"Glegoo,serif",
         allVariants:{color:"white"},
     },
 });
