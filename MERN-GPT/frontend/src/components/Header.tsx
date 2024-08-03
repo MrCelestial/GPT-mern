@@ -13,8 +13,8 @@ const Header = () => {
                 <div style={{marginTop:"5px"}}>
                     {auth?.isLoggedIn ? (
                         <>
-                            <NavigationLink bg = "" to ="/chat" text = "Go to chat" textColor="black"/>
-                            <NavigationLink bg="" to ="/" text ="logout" textColor="white" onClick={auth.logout}/>
+                            <NavigationLink bg = "" to ="/chat" text = "Go to chat" textColor="#fa2742"/>
+                            <NavigationLink bg="" to ="/" text ="logout" textColor="#fa2742" onClick={auth.logout}/>
                         </>
                     ) : (
                         <>

@@ -6,9 +6,10 @@ import {createTheme, ThemeProvider} from "@mui/material";
 import {BrowserRouter} from "react-router-dom";
 import {AuthContextProvider} from "./context/AuthContext.tsx";
 import axios from "axios";
+import {Toaster} from "react-hot-toast";
 
 axios.defaults.baseURL = "http://localhost:3000/api/v1/";
-axios.defaults.withCredentials = false;
+axios.defaults.withCredentials = true;
 
 const theme = createTheme({
     typography:{fontFamily:"Glegoo,serif",
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <AuthContextProvider>
       <BrowserRouter>
       <ThemeProvider theme={theme}>
+          <Toaster position="top-center"/>
          <App />
       </ThemeProvider>
     </BrowserRouter>
