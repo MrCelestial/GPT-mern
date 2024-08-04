@@ -16,7 +16,7 @@ type UserAuth ={
 const AuthContext = createContext<UserAuth | null>(null);
 export const AuthContextProvider = ({children}: {children:ReactNode}) => {
     const [user, setUser] = useState<User | null>(null);
-    const [isLoggedIn, setLoggedIn] = useState(true);
+    const [isLoggedIn, setLoggedIn] = useState(false);
 
     useEffect(()=>{
         //if cookies are valid
