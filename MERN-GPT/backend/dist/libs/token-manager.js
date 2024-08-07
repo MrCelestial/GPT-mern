@@ -8,7 +8,6 @@ export const createToken = (id, email, expiresIn) => {
 };
 export const verifyToken = async (req, res, next) => {
     const token = req.signedCookies[`${COOKIE_NAME}`];
-    console.log(token);
     if (!token || token.trim() == "") {
         return res.status(401).json({ message: "No token provided" });
     }
@@ -16,12 +15,12 @@ export const verifyToken = async (req, res, next) => {
         return jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
             if (err) {
                 reject(err);
-                return res.status(401).send({ error: "Unauthorized" });
+                return res.status(401).json({ error: "Unauthorized" });
             }
             else {
                 console.log("Token verification successful");
                 resolve();
-                res.locals.jwt_token = decoded;
+                res.locals.jwtData = decoded;
                 return next();
             }
         });

@@ -49,7 +49,6 @@ export const signup = async (req, res) => {
 };
 export const login = async (req, res) => {
     try {
-        // userLogin
         const { email, password } = req.body;
         const user = await User.findOne({ email });
         if (!user) {
@@ -82,27 +81,20 @@ export const login = async (req, res) => {
         return res.status(201).json({ error: error.message });
     }
 };
-export const verifyToken = async (req, res) => {
+export const verifyUser = async (req, res) => {
     try {
-        // userLogin
-        const user = await User.findById(res.locals.jwt_token.id);
+        const user = await User.findById(res.locals.jwtData.id);
         if (!user) {
-            return res.status(401).send({ error: "Token malfunction" });
+            return res.status(401).send({ error: "User or Token malfunction" });
         }
-        if (user._id.toString() !== res.locals.jwt_token.id) {
-            return res.status(401).send({ error: "Token not verified" });
+        if (user._id.toString() !== res.locals.jwtData.id) {
+            return res.status(401).send("Token not verified");
         }
-        res.clearCookie(COOKIE_NAME, {
-            httpOnly: true,
-            domain: "localhost",
-            signed: true,
-            path: "/"
-        });
         return res.status(200).json({ message: "Login Successful", name: user.name, email: user.email, });
     }
     catch (error) {
         console.log(error);
-        return res.status(201).json({ error: error.message });
+        return res.status(201).json({ message: "ERROR", cause: error.message });
     }
 };
 //# sourceMappingURL=user-handlers.js.map

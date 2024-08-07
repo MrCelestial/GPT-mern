@@ -22,31 +22,19 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         const checkStatus = async () => {
-            try {
-                const data = await checkAuthStatus();
-                console.log('Authentication status data:', data);
-
-                if (data) {
-                    setUser({ email: data.email, username: data.name });
-                    setLoggedIn(true);
-                } else {
-                    setUser(null);
-                    setLoggedIn(false);
-                }
-            } catch (error) {
-                console.error('Error checking authentication status:', error);
-                setUser(null);
-                setLoggedIn(false);
+            const data = await checkAuthStatus();
+            if(data){
+                setUser({email: data.email, username: data.username});
+                setLoggedIn(true);
             }
-        };
-
+        }
         checkStatus();
     }, []);
 
     const login = async (email: string, password: string) => {
         try {
             const data = await loginUser(email, password);
-            setUser({ email: data.email, username: data.name });
+            setUser({ email: data.email, username: data.username });
             setLoggedIn(true);
         } catch (error) {
             console.error('Error logging in:', error);
