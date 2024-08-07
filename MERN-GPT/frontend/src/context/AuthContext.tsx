@@ -1,5 +1,5 @@
 import {createContext, ReactNode, useContext, useEffect, useState} from 'react';
-import {loginUser} from "../helpers/api-comms.tsx";
+import {checkAuthStatus, loginUser} from "../helpers/api-comms.tsx";
 
 type User = {
     username: string;
@@ -18,10 +18,31 @@ export const AuthContextProvider = ({children}: {children:ReactNode}) => {
     const [user, setUser] = useState<User | null>(null);
     const [isLoggedIn, setLoggedIn] = useState(false);
 
-    useEffect(()=>{
-        //if cookies are valid
+    useEffect(() => {
+        // Function to check authentication status and update state
+        async function checkStatus() {
+            try {
+                const data = await checkAuthStatus();
+                console.log('Authentication status data:', data); // Log received data
 
-    },[]);
+                if (data) {
+                    setUser({ email: data.email, username: data.name });
+                    setLoggedIn(true);
+                } else {
+                    setUser(null);
+                    setLoggedIn(false);
+                }
+            } catch (error) {
+                console.error('Error checking authentication status:', error);
+                setUser(null);
+                setLoggedIn(false);
+            }
+        }
+
+        checkStatus();
+    }, []);
+
+
     const login = async (email:string, password: string) => {
         const data = await loginUser(email, password);
         if(data){
