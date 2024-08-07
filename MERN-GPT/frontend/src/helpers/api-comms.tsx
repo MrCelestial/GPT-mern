@@ -1,15 +1,27 @@
 import axios from "axios";
 
-export const loginUser = async (email: string, password:string) => {
-    const res = await axios.post("/users/login", {email, password});
-    if(res.status !== 200) {
-        throw new Error("Failed to login user");
+export const loginUser = async (email: string, password: string) => {
+    try {
+        const res = await axios.post("/users/login", { email, password });
+
+        if (res.status !== 200) {
+            throw new Error("Failed to login user");
+        }
+
+        return res.data; // Return the data directly
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.error('Axios error during login:', error.response?.data || error.message);
+        } else {
+            console.error('Unexpected error during login:', error);
+        }
+        throw error; // Re-throw the error to be handled by the caller
     }
-    return await res.data;
 };
+
 export const checkAuthStatus = async () => {
     try {
-        const res = await axios.get("/users/auth-status");
+        const res = await axios.get("/users/auth-status"); // Ensure the path is correct
 
         // Debugging: Log the response
         console.log('Response status:', res.status);

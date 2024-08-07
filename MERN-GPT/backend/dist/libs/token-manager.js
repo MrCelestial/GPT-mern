@@ -8,6 +8,19 @@ export const createToken = (id, email, expiresIn) => {
 };
 export const verifyToken = async (req, res, next) => {
     const token = req.signedCookies[`${COOKIE_NAME}`];
-    console.log(token);
+    return new Promise((resolve, reject) => {
+        return jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+            if (err) {
+                reject(err);
+                return res.status(401).send({ error: "Unauthorized" });
+            }
+            else {
+                console.log("Token verification successful");
+                resolve();
+                res.locals.jwt_token = decoded;
+                return next();
+            }
+        });
+    });
 };
 //# sourceMappingURL=token-manager.js.map

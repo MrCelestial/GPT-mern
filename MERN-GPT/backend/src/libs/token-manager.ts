@@ -8,9 +8,19 @@ export const createToken = (id:string, email:string, expiresIn:string)=>{
         expiresIn,
     });
 };
-export const verifyToken = async (req:Request, res:Response, next:NextFunction)=>{
+export const verifyToken = async (req:Request, res:Response, next:NextFunction)=> {
     const token = req.signedCookies[`${COOKIE_NAME}`];
-    console.log(token);
-
+    return new Promise<void>((resolve, reject) => {
+        return jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+            if (err) {
+                reject(err);
+                return res.status(401).send({error: "Unauthorized"});
+            }else{
+                console.log("Token verification successful");
+                resolve();
+                res.locals.jwt_token = decoded;
+                return next();
+            }
+        });
+    });
 };
-
