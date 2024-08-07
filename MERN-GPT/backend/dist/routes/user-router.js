@@ -6,6 +6,6 @@ const userRouter = Router();
 userRouter.get("/", getAllUsers);
 userRouter.post("/signup", validate(userSignupValidator), signup);
 userRouter.post("/login", validate(userLoginValidator), login);
-userRouter.post("/auth-status", verifyToken, login);
+userRouter.get("/auth-status", verifyToken, login);
 export default userRouter;
 //# sourceMappingURL=user-router.js.map

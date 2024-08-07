@@ -82,4 +82,27 @@ export const login = async (req, res) => {
         return res.status(201).json({ error: error.message });
     }
 };
+export const verifyToken = async (req, res) => {
+    try {
+        // userLogin
+        const user = await User.findById(res.locals.jwt_token.id);
+        if (!user) {
+            return res.status(401).send({ error: "Token malfunction" });
+        }
+        if (user._id.toString() !== res.locals.jwt_token.id) {
+            return res.status(401).send({ error: "Token not verified" });
+        }
+        res.clearCookie(COOKIE_NAME, {
+            httpOnly: true,
+            domain: "localhost",
+            signed: true,
+            path: "/"
+        });
+        return res.status(200).json({ message: "Login Successful", name: user.name, email: user.email, });
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(201).json({ error: error.message });
+    }
+};
 //# sourceMappingURL=user-handlers.js.map
