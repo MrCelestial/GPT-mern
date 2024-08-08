@@ -1,1 +1,1 @@
-{"version":3,"file":"chat-handlers.js","sourceRoot":"","sources":["../../src/handlers/chat-handlers.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,MAAM,sBAAsB,GAAG,KAAK,EAAC,GAAY,EAAE,GAAa,EAAE,IAAkB,EAAE,EAAE;AAG/F,CAAC,CAAA"}
+{"version":3,"file":"chat-handlers.js","sourceRoot":"","sources":["../../src/handlers/chat-handlers.ts"],"names":[],"mappings":"AAEA,MAAM,CAAC,MAAM,sBAAsB,GAAG,KAAK,EAAC,GAAY,EAAE,GAAa,EAAE,IAAkB,EAAE,EAAE;IAE3F,MAAM,EAAC,OAAO,EAAC,GAAE,GAAG,CAAC,IAAI,CAAC;AAC9B,CAAC,CAAA"}

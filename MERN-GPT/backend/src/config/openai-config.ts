@@ -1,6 +1,7 @@
 import Configuration from "openai";
-function openaiConfig(){
+export const openaiConfig=()=>{
     const config = new Configuration({
         apiKey: process.env.API_KEY,
-    })
-}
+        //organization: process.env.ORGANIZATION,
+    });
+};
