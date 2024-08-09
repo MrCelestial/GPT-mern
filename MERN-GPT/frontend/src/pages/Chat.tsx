@@ -101,14 +101,46 @@ function Chat() {
                     </Button>
                 </Box>
             </Box>
-            <Box sx={{ display: "flex", flex: { md: 0.8, xs: 1, sm: 1 }, alignItems: 'center', justifyContent: 'center', flexDirection:'column' , pd:3}}>
-                <Typography sx={{ fontSize: '40px', color: 'white', mb: 2, textAlign: 'center', fontWeight: 700 }}>
+            <Box sx={{
+                width: "100%",
+                display: "flex",
+                flex: {md: 0.8, xs: 1, sm: 1},
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexDirection: 'column'
+            }}>
+                <Typography sx={{fontSize: '40px', color: 'white', mb: 2, textAlign: 'center', fontWeight: 700}}>
                     Model - GPT 3.5 Turbo
                 </Typography>
-                <Box sx={{width:"100%", height:"60vh", borderRadius: 3, mx:"auto", display:'flex', flexDirection:'column', overflow:'scroll', overflowX:"hidden",overflowY:'auto',scrollBehavior:"smooth"}}>
-                    {chatMeassages.map((chat,index)=>(<ChatItems content={chat.content} role={chat.role} key={index}/>))}
-                </Box>
+                <Box sx={{
+                    width: "100%",
+                    height: "60vh",
+                    borderRadius: 3,
+                    mx: "auto",
+                    display: 'flex',
+                    flexDirection: 'column',
+                    overflow: 'scroll',
+                    overflowX: "hidden",
+                    scrollBehavior: "smooth"
+                }}>
+                    {chatMeassages.map((chat, index) => (
+                        <ChatItems content={chat.content} role={chat.role} key={index}/>))}
 
+                </Box>
+                <div style={{width:"100%", borderTop: '1px solid #333', marginTop:'8px'}}>
+                <input type="text" style={{
+                    width: "98%",
+                    alignItems:"initial",
+                    backgroundColor: "transparent",
+                    margin: "5px",
+                    padding: "2px",
+                    border: "none",
+                    outline: "none",
+                    color: "white",
+                    fontSize: "16px",
+                    fontFamily: "Glegoo"
+                    }} placeholder="Type your mesage here~"/>
+                </div>
             </Box>
         </Box>
     );
