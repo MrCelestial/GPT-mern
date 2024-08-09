@@ -19,7 +19,7 @@ export const verifyToken = async (req:Request, res:Response, next:NextFunction)=
                 reject(err);
                 return res.status(401).json({error: "Unauthorized"});
             }else{
-                console.log("Token verification successful");
+                //console.log("Token verification successful");
                 resolve();
                 res.locals.jwtData = decoded;
                 return next();
