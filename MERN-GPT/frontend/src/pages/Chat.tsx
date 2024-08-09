@@ -1,5 +1,6 @@
 import {Avatar, Box, Button, Typography} from "@mui/material";
 import { useAuth } from "../context/AuthContext.tsx";
+import ChatItems from "../components/chat/ChatItems.tsx";
 
 function Chat() {
     const auth = useAuth();
@@ -105,7 +106,7 @@ function Chat() {
                     Model - GPT 3.5 Turbo
                 </Typography>
                 <Box sx={{width:"100%", height:"60vh", borderRadius: 3, mx:"auto", display:'flex', flexDirection:'column', overflow:'scroll', overflowX:"hidden",overflowY:'auto',scrollBehavior:"smooth"}}>
-                    {chatMeassages.map((chat)=><div>{chat.content}</div>)}
+                    {chatMeassages.map((chat,index)=>(<ChatItems content={chat.content} role={chat.role} key={index}/>))}
                 </Box>
 
             </Box>

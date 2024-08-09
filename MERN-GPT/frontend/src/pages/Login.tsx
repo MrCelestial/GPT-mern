@@ -6,18 +6,26 @@ import {useAuth} from "../context/AuthContext.tsx";
 
 const Login = () => {
     const auth = useAuth()
-    const handleSubmit = async (e:React.FormEvent<HTMLFormElement>)=>{
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const email = formData.get("email") as string;
         const password = formData.get("password") as string;
-        try{
-            toast.loading("Signing in",{id:"login"})
-            await auth?.login(email,password);
-            toast.success("Login successful",{id:"login"});
-        }catch(error){
-            console.log(error);
-            toast.error("Signing in failed",{id:"login"});
+
+        // Validate email and password
+        if (!email || !password) {
+            toast.error("Email and password are required.", { id: "login" });
+            return;
+        }
+        try {
+            toast.loading("Signing in", { id: "login" });
+            await auth?.login(email, password);
+            toast.success("Login successful", { id: "login" });
+        } catch (error) {
+            console.error("Login error:", error);
+
+            toast.error("Signing in failed", { id: "login" });
         }
     };
     return(
