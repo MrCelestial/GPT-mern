@@ -67,7 +67,7 @@ This project involves creating a ChatGPT bot using the MERN stack. The MERN stac
    ```
    
 ## Usage
-- **Frontend**: Navigate to http://localhost:3000 to access the chat interface.
+- **Frontend**: Navigate to http://localhost:5173 to access the chat interface as we are using VITE.
 - **Backend** :Backend: The API is available at http://localhost:3001.
 
 ## Contributing
