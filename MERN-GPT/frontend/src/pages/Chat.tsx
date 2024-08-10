@@ -54,10 +54,10 @@ function Chat() {
                     }}>
                         {initials}
                     </Avatar>
-                    <Typography sx={{ textAlign: 'center', color: 'white', fontFamily: "Glegoo", mb: 2 }}>
+                    <Typography sx={{ textAlign: 'center', color: '#e8eae3', fontFamily: "Glegoo", mb: 2 }}>
                         You are talking to an AI assistant chatbot
                     </Typography>
-                    <Typography sx={{ textAlign: 'center', color: 'white', fontFamily: "Glegoo", mb: 4, px: 3 }}>
+                    <Typography sx={{ textAlign: 'center', color: '#e8eae3', fontFamily: "Glegoo", mb: 4, px: 3 }}>
                         Yapsalot-GPT provides fun and automated responses based on input; not a substitute for professional advice or human interaction.
                     </Typography>
                     <Button
