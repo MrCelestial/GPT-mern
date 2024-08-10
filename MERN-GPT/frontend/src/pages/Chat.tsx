@@ -1,6 +1,7 @@
-import {Avatar, Box, Button, Typography} from "@mui/material";
+import {Avatar, Box, Button, IconButton, Typography} from "@mui/material";
 import { useAuth } from "../context/AuthContext.tsx";
 import ChatItems from "../components/chat/ChatItems.tsx";
+import { IoMdSend } from "react-icons/io"
 
 function Chat() {
     const auth = useAuth();
@@ -127,9 +128,9 @@ function Chat() {
                         <ChatItems content={chat.content} role={chat.role} key={index}/>))}
 
                 </Box>
-                <div style={{width:"100%", borderTop: '1px solid #333', marginTop:'8px'}}>
+                <div style={{width:"100%", display:'flex', borderTop: '1px solid #333', marginTop:'8px'}}>
                 <input type="text" style={{
-                    width: "98%",
+                    width: "90%",
                     alignItems:"initial",
                     backgroundColor: "transparent",
                     margin: "5px",
@@ -140,6 +141,7 @@ function Chat() {
                     fontSize: "16px",
                     fontFamily: "Glegoo"
                     }} placeholder="Type your mesage here~"/>
+                <IconButton sx ={{ml: "auto", color:"white"}}><IoMdSend/></IconButton>
                 </div>
             </Box>
         </Box>
