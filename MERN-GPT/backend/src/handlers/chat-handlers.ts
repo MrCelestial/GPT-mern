@@ -23,7 +23,7 @@ export const generateChatCompletion = async (req: Request, res: Response, next: 
 
         // Ensure user.chats has the correct role types
         const chats: ChatMessage[] = user.chats.map(({ role, content }) => ({
-            role: role as 'user' | 'system' | 'assistant', // Type assertion if needed
+            role: role as 'user' | 'assistant', // Type assertion if needed
             content
         }));
 
