@@ -33,7 +33,6 @@ export const generateChatCompletion = async (req: Request, res: Response, next: 
                 query: chat.content,
                 parameters: {
                     role: chat.role,
-
                 },
             })),
         };
