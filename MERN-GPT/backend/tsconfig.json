@@ -6,7 +6,8 @@
     "sourceMap": true,
     "outDir": "dist",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "compileOnSave": true
   },
   "include": ["src/**/*.ts", "src/index.ts"]
 }

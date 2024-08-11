@@ -1,9 +1,9 @@
 import User from "../models/user.js";
-import { OpenAI } from "openai";
+import { GeminiClient } from "google-gemini"; // Replace with the actual Gemini client import
 import * as dotenv from 'dotenv';
 dotenv.config(); // Load environment variables
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+const geminiClient = new GeminiClient({
+    apiKey: process.env.GOOGLE_AI, // Use Gemini API key
 });
 export const generateChatCompletion = async (req, res, next) => {
     try {
@@ -19,15 +19,15 @@ export const generateChatCompletion = async (req, res, next) => {
         // Add the new message
         chats.push({ content: message, role: 'user' });
         user.chats.push({ content: message, role: 'user' });
-        // Call OpenAI API
-        const response = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo", // Model to be used
+        // Call Gemini API
+        const response = await geminiClient.chat.complete({
+            model: "gemini-1.0", // Use the correct model for Gemini
             messages: chats,
         });
         // Extract bot reply from the response
         const botReply = response.choices[0].message.content;
         // Add the bot's reply to the user's chat history
-        chats.push({ content: botReply, role: 'assistant' }); //roles can be changed later
+        chats.push({ content: botReply, role: 'assistant' });
         user.chats.push({ content: botReply, role: 'assistant' });
         // Save the updated user
         await user.save();
