@@ -6,18 +6,23 @@ export const generateChatCompletion = async (req, res, next) => {
         const user = await User.findById(res.locals.jwtData.id);
         if (!user)
             return res.status(401).json({ message: "User not found." });
-        // Create chat history ensuring the initial message has role 'user'
-        const chatHistory = user.chats.map(({ role, content }) => ({
+        // Check for empty user message
+        if (!message) {
+            return res.status(400).json({ message: "Please enter a message." });
+        }
+        // Handle existing chat history or create an empty array
+        const existingChatHistory = user.chats.length > 0 ? user.chats : [];
+        // Build chat history with user message first
+        const chatHistory = existingChatHistory.map(({ role, content }) => ({
             role,
             parts: [{ text: content }],
         }));
-        // Add the new user message to history
         chatHistory.push({
             role: "user",
             parts: [{ text: message }],
         });
         // Initialize Google Generative AI client
-        const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI);
+        const genAI = new GoogleGenerativeAI(process.env.API_KEY);
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
         // Start chat with history
         const chat = model.startChat({ history: chatHistory });
