@@ -1,9 +1,10 @@
 import {Avatar, Box, Button, IconButton, Typography} from "@mui/material";
-import { useAuth } from "../context/AuthContext.tsx";
+import {useAuth} from "../context/AuthContext.tsx";
 import ChatItems from "../components/chat/ChatItems.tsx";
-import { IoMdSend } from "react-icons/io"
+import {IoMdSend} from "react-icons/io"
 import {useRef, useState} from "react";
 import {sendChatRequest} from "../helpers/api-comms.tsx";
+
 type Messages = {
     role:"user"|"assistant";
     content:"string"
@@ -84,7 +85,7 @@ function Chat() {
                 flexDirection: 'column'
             }}>
                 <Typography sx={{fontSize: '40px', color: 'white', mb: 2, textAlign: 'center', fontWeight: 700}}>
-                    Model - GPT 3.5 Turbo
+                    Gemini Pro!
                 </Typography>
                 <Box sx={{
                     width: "100%",
